@@ -7,8 +7,6 @@ import javax.swing.*;
 public class Malen implements ActionListener, ItemListener, MouseMotionListener {
 	private Container behaelter;
 
-	private int altesX = 0;
-	private int altesY = 0;
 	private Color aktuelleFarbe = Color.black;
 	private JButton loeschKnopf;
 	private JComboBox farbWahl;
@@ -35,6 +33,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener 
 	};
 	
 	private Verbindung aktuelleVerbindung = verbindungen[0];
+	
 
 
 	public void init() {
@@ -64,7 +63,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener 
 		// add new colors
 		farbWahl.addItem(zyan);
 		farbWahl.addItem(magenta);
-		this.setColor(Color.black);
+		this.aktuelleVerbindung.aktualisiereFarbe(Color.black);
 		farbWahl.setForeground(Color.white);
 		menue.add(new JLabel("Farbe: "));
 		menue.add(farbWahl);
@@ -133,27 +132,22 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener 
 	}
 
 	private void setColor(Color c) {
-		aktuelleFarbe = c;
+		this.aktuelleVerbindung.aktualisiereFarbe(c);
 		farbWahl.setBackground(c);
 		farbWahl.setForeground(Color.black);
 	}
 
-	public void mouseDragged(MouseEvent e) {
-		Verbindung s = (Verbindung) this.aktuelleVerbindung.clone();
+	public void mouseDragged(MouseEvent e) {		
 		
-		s.aktualisiereFarbe(aktuelleFarbe);
-		
-		
-		this.zeichnung.addiere(s);
-		this.zeichnung.repaint();
-		altesX = e.getX();
-		altesY = e.getY();
-
+		this.aktuelleVerbindung.aktualisiereKoord(e.getX(),e.getY());
+				
+		this.zeichnung.addiere((Verbindung) this.aktuelleVerbindung.clone());
+		this.zeichnung.repaint();		
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		altesX = e.getX();
-		altesY = e.getY();
+		this.aktuelleVerbindung.aktualisiereKoord(e.getX(),e.getY());
+		
 	}
 
 	public void addiere(JComponent komponente) {

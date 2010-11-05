@@ -69,7 +69,6 @@ public class Strich implements Verbindung {
 
 	@Override
 	public Object clone() { 
-		return new Strich(this.xs, this.ys, this.xe, this.ye, this.color); 
-	
+		return new Strich(this.xs, this.ys, this.xe, this.ye, this.color);	
 	}
 }
