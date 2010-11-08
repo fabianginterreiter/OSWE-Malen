@@ -100,12 +100,7 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener 
 		} else if (ereignisQuelle == endeKnopf) {
 			System.exit(0);
 		} else if (ereignisQuelle == this.strichWahl) {
-			for (Verbindung v : verbindungen) {
-				if (v.toString().compareTo(this.strichWahl.getSelectedItem().toString()) == 0) {
-					this.aktuelleVerbindung = v;
-					break;
-				}
-			}			
+			this.aktuelleVerbindung = verbindungen[this.strichWahl.getSelectedIndex()];		
 		}
 	}
 
@@ -131,7 +126,9 @@ public class Malen implements ActionListener, ItemListener, MouseMotionListener 
 	}
 
 	private void setColor(Color c) {
-		this.aktuelleVerbindung.aktualisiereFarbe(c);
+		for (Verbindung v : verbindungen) {
+			v.aktualisiereFarbe(c);
+		}
 		farbWahl.setBackground(c);
 		farbWahl.setForeground(Color.black);
 	}
