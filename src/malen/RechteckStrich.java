@@ -18,4 +18,8 @@ public class RechteckStrich extends Strich {
 		g.drawRect(xs, ys, 5, 5);
 	}
 
+	@Override
+	public Object clone() { 
+		return new RechteckStrich(this.xs, this.ys, this.xe, this.ye, this.color);	
+	}
 }

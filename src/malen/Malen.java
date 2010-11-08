@@ -7,7 +7,6 @@ import javax.swing.*;
 public class Malen implements ActionListener, ItemListener, MouseMotionListener {
 	private Container behaelter;
 
-	private Color aktuelleFarbe = Color.black;
 	private JButton loeschKnopf;
 	private JComboBox farbWahl;
 	private JButton endeKnopf;

@@ -18,4 +18,8 @@ public class DoppelStrich extends Strich {
 		g.drawLine(this.xs + 3, ys + 3, xe + 3, ye + 3);
 	}
 
+	@Override
+	public Object clone() { 
+		return new DoppelStrich(this.xs, this.ys, this.xe, this.ye, this.color);	
+	}
 }

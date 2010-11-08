@@ -18,4 +18,8 @@ public class PunktStrich extends Strich {
 		g.drawOval(this.xs, ys, 5, 5);
 	}
 
+	@Override
+	public Object clone() { 
+		return new PunktStrich(this.xs, this.ys, this.xe, this.ye, this.color);	
+	}
 }
